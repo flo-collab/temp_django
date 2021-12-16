@@ -1,0 +1,27 @@
+{% extends 'upload_csv/base.html' %}
+{% load static %}
+
+    {% block content %}
+
+    <h1>test -- Upload un csv -- test</h1>
+    <h2>ça te dit d'upload un csv ???</h2>
+    <p>la c'est la page de test</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" accept=".csv">
+        <button type="submit">Upload</button>
+    </form>
+    <button type="submit">Delete<a></a></button>
+
+    {% if uploaded_file_url %}
+        <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
+
+    {% if nothing_uploaded %}
+    <p>Il y a un problème : {{nothing_uploaded}}</p>
+    {% endif %}
+
+
+   
+    
+    {% endblock %}
